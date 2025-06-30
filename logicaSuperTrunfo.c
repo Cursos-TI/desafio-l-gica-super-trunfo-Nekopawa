@@ -28,9 +28,11 @@ int main() {
     float densidadeDemografica2 = (float) populacao2 / area2;
  
     int escolha;
+    int resultado1, resultado2;
 
-    // Menu para seleção do atributo
-    printf("\n\nInforme o atributo que será comparado:\n");
+    /* CARTA 1 */
+    // Menu para seleção do atributo da carta 1
+    printf("\n\nInforme o primeiro atributo que será comparado:\n");
     printf("1 - População\n");
     printf("2 - Área\n");
     printf("3 - PIB\n");
@@ -42,76 +44,92 @@ int main() {
         // Atributo 1 - população
         case 1:
             printf("\nAtributo escolhido: população.\n");
-            printf("%s: %d\n", nome1, populacao1);
-            printf("%s: %d\n", nome2, populacao2);
-            if (populacao1 > populacao2) {
-                printf("Carta 1 - %s venceu!\n", nome1);
-            } else if (populacao1 < populacao2) {
-                printf("Carta 2 - %s venceu!\n", nome2);
-            } else {
-                printf("Empate!\n");
-            }        
-            break;        
+            resultado1 = populacao1 > populacao2 ? 1 : 0;
+            break;
       
         // Atributo 2 - área
         case 2:
             printf("\nAtributo escolhido: área.\n");
-            printf("%s: %.2f\n", nome1, area1);
-            printf("%s: %.2f\n", nome2, area2);
-            if (area1 > area2) {
-                printf("Carta 1 - %s venceu!\n", nome1);
-            } else if (area1 < area2) {
-                printf("Carta 2 - %s venceu!\n", nome2);
-            } else {
-                printf("Empate!\n");
-            }        
+            resultado1 = area1 > area2 ? 1 : 0;        
             break;        
         
         // Atributo 3 - PIB
         case 3:
             printf("\nAtributo escolhido: PIB.\n");
-            printf("%s: %.2f\n", nome1, pib1);
-            printf("%s: %.2f\n", nome2, pib2);
-            if (pib1 > pib2) {
-                printf("Carta 1 - %s venceu!\n", nome1);
-            } else if (pib1 < pib2) {
-                printf("Carta 2 - %s venceu!\n", nome2);
-            } else {
-                printf("Empate!\n");
-            }        
+            resultado1 = pib1 > pib2 ? 1 : 0;
             break;        
             
         // Atributo 4 - número de pontos turísticos
         case 4:
             printf("\nAtributo escolhido: número de pontos turísticos.\n");
-            printf("%s: %d\n", nome1, qtdPontosTuristicos1);
-            printf("%s: %d\n", nome2, qtdPontosTuristicos2);
-            if (qtdPontosTuristicos1 > qtdPontosTuristicos2) {
-                printf("Carta 1 - %s venceu!\n", nome1);
-            } else if (qtdPontosTuristicos1 < qtdPontosTuristicos2) {
-                printf("Carta 2 - %s venceu!\n", nome2);
-            } else {
-                printf("Empate!\n");
-            }        
+            resultado1 = qtdPontosTuristicos1 > qtdPontosTuristicos2 ? 1 : 0;        
             break;        
 
         // Atributo 5 - densidade demográfica
         case 5:
             printf("\nAtributo escolhido: densidade demográfica.\n");
-            printf("%s: %.2f\n", nome1, densidadeDemografica1);
-            printf("%s: %.2f\n", nome2, densidadeDemografica2);
-            if (densidadeDemografica1 < densidadeDemografica2) {
-                printf("Carta 1 - %s venceu!\n", nome1);
-            } else if (densidadeDemografica1 > densidadeDemografica2) {
-                printf("Carta 2 - %s venceu!\n", nome2);
-            } else {
-                printf("Empate!\n");
-            }        
+            resultado1 = densidadeDemografica1 > densidadeDemografica2 ? 1 : 0;
             break;
 
         default:
             printf("Não existe um atributo com a opção selecionada.");
-        }
+            break;
+    }
+
+    /* CARTA 2 */
+    // Menu para seleção do atributo da carta 2
+    printf("\n\nInforme o segundo atributo que será comparado:\n");
+    printf("1 - População\n");
+    printf("2 - Área\n");
+    printf("3 - PIB\n");
+    printf("4 - Número de pontos turísticos\n");
+    printf("5 - Densidade demográfica\n");
+    scanf("%d", &escolha);
+
+    switch (escolha) {
+        // Atributo 1 - população
+        case 1:
+            printf("\nAtributo escolhido: população.\n");
+            resultado2 = populacao1 > populacao2 ? 1 : 0;
+            break;
+      
+        // Atributo 2 - área
+        case 2:
+            printf("\nAtributo escolhido: área.\n");
+            resultado2 = area1 > area2 ? 1 : 0;        
+            break;        
         
+        // Atributo 3 - PIB
+        case 3:
+            printf("\nAtributo escolhido: PIB.\n");
+            resultado2 = pib1 > pib2 ? 1 : 0;
+            break;        
+            
+        // Atributo 4 - número de pontos turísticos
+        case 4:
+            printf("\nAtributo escolhido: número de pontos turísticos.\n");
+            resultado2 = qtdPontosTuristicos1 > qtdPontosTuristicos2 ? 1 : 0;        
+            break;        
+
+        // Atributo 5 - densidade demográfica
+        case 5:
+            printf("\nAtributo escolhido: densidade demográfica.\n");
+            resultado2 = densidadeDemografica1 > densidadeDemografica2 ? 1 : 0;
+            break;
+
+        default:
+            printf("Não existe um atributo com a opção selecionada.");
+            break;    
+    }
+    
+    //Verificar resultados
+    if (resultado1 && resultado2) {
+        printf("\nCarta 1 - %s venceu!", nome1);
+    } else if (resultado1 != resultado2) {
+        printf("\nEmpate!");
+    } else {
+        printf("\nCarta 2 - %s venceu!", nome2);
+    }
+
     return 0;
 }
